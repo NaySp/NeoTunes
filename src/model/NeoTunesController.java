@@ -18,45 +18,45 @@ public class NeoTunesController{
     public boolean addCustomer(Customer customer){
         return customers.add(customer);
     }
-
-    public String addProducerArtist(String name, String date, String url, int playBack, int playTime){
-       
-        String msj;
-        Producer newProducer = new Artist(name, date, url, playBack, playTime);
-        producers.add(newProducer);
-        msj = "Artist added successfully. ";
-        return msj;
-
-    }
     
-    public String addProducerInfluencer(String name, String date, String url, int playBack, int playTime){
+    public String addProducer(String name, String date, String url, int playBack, int playTime){
        
-        String msj;
-        Producer newProducer = new Influencer(name, date, url, playBack, playTime);
-        producers.add(newProducer);
-        msj = "Influencer added successfully. ";
-        return msj;
+        int opt = 0;
+        String msj = "";
+        Producer newProducer;
 
+        if(opt == 1){
+            newProducer = new Artist(name, date, url, playBack, playTime);
+            producers.add(newProducer);
+            msj = "Artist added successfully." ;
+        }
+        else if(opt == 2){
+            newProducer = new Influencer(name, date, url, playBack, playTime);
+            producers.add(newProducer);
+            msj = "Influencer added successfully.";
+
+        }
+
+        return msj;
     }
 
-    public String addCustomerStandard(String nickName, String cc, String tempDate){
-        
-        String msj;
-        Customer newCustomer = new Standard(nickName, cc, tempDate);
-        customers.add(newCustomer);
-        msj = "Standar customer added.";
+
+    public String addCustomer(String nickName, String cc, String tempDate, int opt){
+
+        String msj = "";
+        Customer newCustomer;
+  
+        if (opt == 1) {
+            newCustomer = new Premium(nickName, cc, tempDate);
+            customers.add(newCustomer);
+            msj = "Premium customer added. :* ";
+        }
+        else if(opt == 2){
+            newCustomer = new Standard(nickName, cc, tempDate);
+            customers.add(newCustomer);
+            msj = "Standar customer added.";
+        }
         return msj;
     }
-
-    public String addCustomerPremium(String nickName, String cc, String tempDate){
-        
-        String msj;
-        Customer newCustomer = new Premium(nickName, cc, tempDate);
-        customers.add(newCustomer);
-        msj = "Premium customer added. :* ";
-        return msj;
-
-    }
-     
 
 }
