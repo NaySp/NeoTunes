@@ -1,34 +1,35 @@
 package model;
 
-public class Song {
+public class Song extends Audio {
 
-    String songName;
-    String album;
-    String urlSong;
+    private String album;
 
+    private double saleValue; //precio de venta 
+    private int soldNum; //numero de veces vendido
 
-    double saleValue; //precio de venta 
-    int numPlay;  //numero de reproducciones
-    int timeSold; //numero de veces vendido
+    private Gender gender;
 
-    public Song(String songName, String album, String urlSong, double saleValue, int numPlay, int timeSold){
-
-        this.songName = songName;
+    public Song(String audioName, String urlAudio, double duration, int repNum, String album, double saleValue, int soldNum, int gender){
+        super(audioName, urlAudio, duration, repNum);
         this.album = album;
-        this.urlSong = urlSong;
-
         this.saleValue = saleValue;
+        this.soldNum = soldNum;
+        
+        switch(gender){
+            case 1:
+                this.gender = Gender.ROCK;
+                break;
+            case 2:
+                this.gender = Gender.POP;
+                break;
+            case 3:
+                this.gender = Gender.TRAP;
+                break;
+            case 4: 
+                this.gender = Gender.HOUSE;
+                break;
+        }
 
-        this.numPlay = numPlay;
-        this.timeSold = timeSold;
-    }
-
-    public String getSongName() {
-        return songName;
-    }
-
-    public void setSongName(String songName) {
-        this.songName = songName;
     }
 
     public String getAlbum() {
@@ -39,14 +40,6 @@ public class Song {
         this.album = album;
     }
 
-    public String getUrlSong() {
-        return urlSong;
-    }
-
-    public void setUrlSong(String urlSong) {
-        this.urlSong = urlSong;
-    }
-
     public double getSaleValue() {
         return saleValue;
     }
@@ -55,21 +48,30 @@ public class Song {
         this.saleValue = saleValue;
     }
 
-    public int getNumPlay() {
-        return numPlay;
+    public int getSoldNum() {
+        return soldNum;
     }
 
-    public void setNumPlay(int numPlay) {
-        this.numPlay = numPlay;
+    public void setSoldNum(int soldNum) {
+        this.soldNum = soldNum;
     }
 
-    public int getTimeSold() {
-        return timeSold;
+    public int getGender(){
+        switch(gender){
+            case ROCK:
+                return 1;
+            case POP:
+                return 2;
+            case TRAP:
+                return 3;
+            case HOUSE:
+                return 4;
+            default:
+                return 0;
+        }
     }
 
-    public void setTimeSold(int timeSold) {
-        this.timeSold = timeSold;
-    }
+
 
 
 }

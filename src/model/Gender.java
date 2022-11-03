@@ -1,10 +1,11 @@
 package model;
 
-public enum MusicType{
+public enum Gender{
 
     ROCK,
     POP,
     TRAP,
     HOUSE
+ 
 
 }

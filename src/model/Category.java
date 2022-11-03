@@ -1,7 +1,7 @@
 package model;
 
-public enum PodCastType{
- 
+public enum Category{
+
     POLITIC,
     ENTERTAINMENT,
     VIDEOGAMES,

@@ -6,22 +6,27 @@ public class NeoTunesController{
 
     private ArrayList<Customer> customers;
     private ArrayList<Producer> producers;
+    private ArrayList<Audio> audios;
 
         
     public NeoTunesController(){
 
         producers = new ArrayList<Producer>();
         customers = new ArrayList<Customer>();
+        audios = new ArrayList<Audio>();
         
+    }
+
+    public boolean addProducer(Producer producer){
+        return producers.add(producer);
     }
 
     public boolean addCustomer(Customer customer){
         return customers.add(customer);
     }
     
-    public String addProducer(String name, String date, String url, int playBack, int playTime){
+    public String addProducer(String name, String date, String url, int playBack, int playTime, int opt){
        
-        int opt = 0;
         String msj = "";
         Producer newProducer;
 
@@ -36,13 +41,11 @@ public class NeoTunesController{
             msj = "Influencer added successfully.";
 
         }
-
         return msj;
     }
 
 
     public String addCustomer(String nickName, String cc, String tempDate, int opt){
-
         String msj = "";
         Customer newCustomer;
   
@@ -58,5 +61,28 @@ public class NeoTunesController{
         }
         return msj;
     }
+
+    public String addAudioSong(String audioName, String urlAudio, double duration, int repNum, String album, double saleValue, int soldNum, int gender){
+        
+        String msj;
+        Audio newAudio = new Song(audioName, urlAudio, duration, repNum, album, saleValue, soldNum, gender);
+        audios.add(newAudio);
+        msj = "Song has been added successfully. ";
+        return msj;
+
+    }
+
+    public String addAudioPodCast(String audioName, String urlAudio, double duration, int repNum,  String description, int category){
+        
+        String msj;
+        Audio newAudio = new PodCast(audioName, urlAudio, duration, repNum, description, category);
+        audios.add(newAudio);
+        msj = "PodCast has been added successfully. ";
+        return msj;
+        
+    }
+
+    
+
 
 }

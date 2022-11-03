@@ -1,34 +1,39 @@
 package model;
 
-public class PodCast {
+public class PodCast extends Audio {
 
-    String podName;
-    String description;
-    String category;
-    String urlPod;
+    
+    private String description;
+    private Category category;
+    
 
-    int duration;
-    int repro;
-
-    public PodCast(String podName, String description, String category, String urlPod, int duration, int repro){
-
-        this.podName = podName;
+    public PodCast(String audioName, String urlAudio, double duration, int repNum, String description, int category){
+        super(audioName, urlAudio, duration, repNum);
         this.description = description;
-        this.category = category;
-        this.urlPod = urlPod;
 
-        this.duration = duration;
-        this.repro = repro;
+        switch(category){
+            case 1: 
+
+                this.category = Category.POLITIC;
+                break;
+                
+            case 2:
+
+                this.category = Category.ENTERTAINMENT;
+                break;
+
+            case 3:
+
+                this.category = Category.VIDEOGAMES;
+                break;
+
+            case 4: 
+
+                this.category = Category.FASHION;
+                break;
+        }
         
-     
-    }
 
-    public String getPodName() {
-        return podName;
-    }
-
-    public void setPodName(String podName) {
-        this.podName = podName;
     }
 
     public String getDescription() {
@@ -39,37 +44,24 @@ public class PodCast {
         this.description = description;
     }
 
-    public String getCategory() {
-        return category;
+    public int getCategory(){
+        switch(category){
+            case POLITIC:
+                return 1;
+            case ENTERTAINMENT:
+                return 2;
+            case VIDEOGAMES:
+                return 3;
+            case FASHION:
+                return 4;
+            default:
+                return 0;
+        }
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+    
 
-    public String getUrlPod() {
-        return urlPod;
-    }
 
-    public void setUrlPod(String urlPod) {
-        this.urlPod = urlPod;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public int getRepro() {
-        return repro;
-    }
-
-    public void setRepro(int repro) {
-        this.repro = repro;
-    }   
 
 
 }
