@@ -7,26 +7,28 @@ public class PlayList{
     public static final int COLUMNS = 6;
 
     private Random random;
-  
+
     public PlayList(){
         random = new Random();
     }
 
     public int [][] fillMatriz(){
-        
+
         int matriz[][] = new int[ROWS][COLUMNS];
 
         for(int i= 0; i<ROWS; i++){
             for(int j= 0; j<COLUMNS; j++){
-                matriz[i][j] = random.nextInt(9); 
+                matriz[i][j] = random.nextInt(9);
             }
         }
         return matriz;
     }
 
-    public String generateCode(int opt, int[][]matriz){
+    public String generateCode(int opt){
+
 
         String code = null;
+        int[][]matriz = fillMatriz();
         int acu = 1;
         int acu2 = 1;
 
@@ -35,12 +37,12 @@ public class PlayList{
                 for(int i = matriz.length -1; i >= 0; i++){
                     code += matriz[i][0];
                 }
-        
+
                 for(int i = 1; i < matriz.length - 1; i++){
                     code += matriz[acu][acu2];
                     acu += 1;
                     acu2 += 1;
-                } 
+                }
 
                 for(int i = matriz.length - 1; i >= 0; i++){
                     code += matriz[i][matriz.length - 1];
@@ -54,7 +56,7 @@ public class PlayList{
                 }
                 for(int j=1;j<5;j++){
                     code+=matriz[j][2];
-                } 
+                }
                 for(int k=5;k<0;k--){
                     code+=matriz[k][3];
                 }
@@ -62,7 +64,7 @@ public class PlayList{
                     code+=matriz[0][u];
                 }
                 break;
-            
+
             case 3:
 
                 for (int i=5;i>=0;i--){
@@ -82,5 +84,5 @@ public class PlayList{
 
     }
 
-  
+
 }

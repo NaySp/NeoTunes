@@ -81,10 +81,6 @@ public class Main {
                 "3. Register Songs or Podcasts.\n" + 
                 "4. Create a Playlist.\n" +
                 "5. Edit playlist.\n" +
-                "6. Share a playlist.\n" +
-                "7. consult if a particular apartment is available.\n" +
-                "8. \n"+
-                "9. \n"+
                 "0. Exit.");
             
             option = validateInt();

@@ -8,7 +8,7 @@ public class NeoTunesController{
     private ArrayList<Customer> customers;
     private ArrayList<Producer> producers;
     private ArrayList<Audio> audios;
-    
+    private PlayList playList;
 
         
     public NeoTunesController(){
@@ -128,6 +128,7 @@ public class NeoTunesController{
                 else{
                     Audio newAudio = new Song(audioName, urlAudio, duration, repNum, album, saleValue, soldNum, gender);
                     audios.add(newAudio);
+                    
                     msj = "Song has been added successfully. ";    
                 }
             }
@@ -142,7 +143,6 @@ public class NeoTunesController{
     public String addAudioPodCast(String nickName, String audioName, String urlAudio, double duration, int repNum,  String description, int category){
         
         String msj;
-
         Producer producer = searchProducer(nickName);
 
         if(producer == null){
@@ -167,6 +167,39 @@ public class NeoTunesController{
         return msj;
         
     }
+
+    public String registerPlayList(String nickName, int opt){
+
+        String msj = "";
+        Customer customer = searchCustomer(nickName);
+
+        if(customer == null){
+            msj = "This customer does not exits :c ";
+        }
+        else if(opt == -1 || opt < 1 || opt > 3){
+            msj = "Type valid option. ";
+        }
+        else{
+
+            if(customer instanceof Standard){
+                String code = playList.generateCode(opt);
+                Standard standard = ((Standard)(customer));
+
+                
+
+            }
+            
+
+        }
+        return msj;
+
+
+
+    }
+
+
+
+
 
 
     
