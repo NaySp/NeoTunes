@@ -1,18 +1,17 @@
 package model;
 
-public abstract class Producer{
+public abstract class Producer extends User{
 
     String name;
-    String date; //temporaly until i understand, maybe :x
     String url;
 
     int playBack; // accumulated reproduction
     int playTime; // total time played
 
-    public Producer (String name, String date, String url, int playBack, int playTime){
+    public Producer (String name, String url, int playBack, int playTime){
+        super();
         
         this.name = name;
-        this.date = date;
         this.url = url;
 
         this.playBack = playBack;
@@ -27,18 +26,6 @@ public abstract class Producer{
     public void setName(String name) {
         this.name = name;
     }
-
-
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-
 
     public String getUrl() {
         return url;

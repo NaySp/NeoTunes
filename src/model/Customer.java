@@ -1,15 +1,15 @@
 package model;
 
-public abstract class Customer {
+public abstract class Customer extends User {
 
     String nickName;
     String cc;
-    String tempDate;
+    
 
-    public Customer(String nickName, String cc, String tempDate){
+    public Customer(String nickName, String cc){
+        super();
         this.nickName = nickName;
-        this.cc = cc;
-        this.tempDate = tempDate;
+        this.cc = cc;       
     }
 
     public String getNickName() {
@@ -27,13 +27,4 @@ public abstract class Customer {
     public void setCc(String cc) {
         this.cc = cc;
     }
-
-    public String getTempDate() {
-        return tempDate;
-    }
-
-    public void setTempDate(String tempDate) {
-        this.tempDate = tempDate;
-    }
-    
 }

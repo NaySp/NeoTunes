@@ -2,8 +2,6 @@ package ui;
 
 import java.util.Scanner;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.SpecialAction;
-
 import model.NeoTunesController;
 
 public class Main {
@@ -101,16 +99,16 @@ public class Main {
 
 		switch(option){
 	
-			case 1 -> addProducer();
+            case 1 -> addProducer();
 
             case 2 -> addCustomer();
 
             case 3 -> addAudio();
-		
-			case 0 -> System.out.println("Exit program.");
+            
+            case 0 -> System.out.println("Exit program.");
 
 
-			default -> System.out.println("Invalid Option");
+            default -> System.out.println("Invalid Option");
 
 		}
 	}
@@ -132,12 +130,10 @@ public class Main {
         else{
             System.out.println("Type the name of the producer: ");
             String name = reader.next();
-            System.out.println("date");
-            String date = reader.next();
             System.out.println("Type the url of the image: ");
             String url = reader.next();
 
-            msj = controller.addProducer(name, date, url, opt, opt, opt);
+            msj = controller.addProducer(name, url, opt, opt, opt);
             System.out.println(msj);
         }
     }
@@ -160,18 +156,20 @@ public class Main {
             String nickName = reader.next();
             System.out.println("Type your identification: ");
             String cc = reader.next();
-            System.out.println("date");
-            String tempDate = reader.next();
 
-            msj = controller.addCustomer(nickName, cc, tempDate, opt);
+            msj = controller.addCustomer(nickName, cc, opt);
             System.out.println(msj);
 
         }
     }
     
+    /**
+     * 
+     */
     public void addAudio(){
 
         String msj;
+        String name;
         String audioName;
         String urlAudio;
         String album;
@@ -187,6 +185,8 @@ public class Main {
         int category = 0;
 
         System.out.println("Welcome to add song or audio <<< ");
+        System.out.println("Please write the name of the artist or influencer which the audio will belong");
+        name = reader.next();
         System.out.println("Please type the name of the song or podcast. ");
         audioName = reader.next();
         System.out.println("Please type the url of the image that will have the song or podcast. ");
@@ -220,7 +220,7 @@ public class Main {
             }else if(saleValue == -1)
                 System.out.println("write a valid price. ");
             else{
-                msj = controller.addAudioSong(audioName, urlAudio, duration, 0, album, saleValue, opt, gender);
+                msj = controller.addAudioSong(name, audioName, urlAudio, duration, 0, album, saleValue, opt, gender);
                 System.out.println(msj);
             }
         }else if(opt == 2){
@@ -237,12 +237,14 @@ public class Main {
                 System.out.println("Write a valid category. ");
             }
             else{
-                msj = controller.addAudioPodCast(audioName, urlAudio, duration, 0, description, gender);
+                msj = controller.addAudioPodCast(name, audioName, urlAudio, duration, 0, description, gender);
                 System.out.println(msj);
             }
 
         }
     }
+
+    
     
     
 }
