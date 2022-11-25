@@ -7,8 +7,8 @@ public class PodCast extends Audio {
     private Category category;
     
 
-    public PodCast(String audioName, String urlAudio, double duration, int repNum, String description, int category){
-        super(audioName, urlAudio, duration, repNum);
+    public PodCast(String audioName, String urlAudio, double duration, Producer influencer, int repNum, String description, int category){
+        super(audioName, urlAudio, duration, influencer);
         this.description = description;
 
         switch(category){
@@ -36,6 +36,8 @@ public class PodCast extends Audio {
 
     }
 
+    //** Getters and setters */
+    
     public String getDescription() {
         return description;
     }

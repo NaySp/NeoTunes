@@ -1,19 +1,18 @@
 package model;
 
-public class Song extends Audio {
+public class Song extends Audio implements iSellable {
 
     private String album;
-
     private double saleValue; //precio de venta 
     private int soldNum; //numero de veces vendido
 
     private Gender gender;
 
-    public Song(String audioName, String urlAudio, double duration, int repNum, String album, double saleValue, int soldNum, int gender){
-        super(audioName, urlAudio, duration, repNum);
+    public Song(String audioName, String urlAudio, Producer artist, double duration, String album, double saleValue, int gender){
+        super(audioName, urlAudio, duration, artist);
         this.album = album;
         this.saleValue = saleValue;
-        this.soldNum = soldNum;
+        soldNum = 0;
         
         switch(gender){
             case 1:
@@ -30,6 +29,19 @@ public class Song extends Audio {
                 break;
         }
 
+    }
+
+    @Override
+    public String sell(){
+        soldNum++;
+        super.getArtis().updateSoldInfo(super.getDuration());
+        return "The song " + getAudioName() + " has been sold... ";
+        
+    }
+
+    public double totalSell(){
+        double totalSells= saleValue*soldNum;
+        return totalSells;
     }
 
     public String getAlbum() {

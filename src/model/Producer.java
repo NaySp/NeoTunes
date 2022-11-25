@@ -14,9 +14,17 @@ public abstract class Producer extends User{
         this.name = name;
         this.url = url;
 
-        this.playBack = playBack;
-        this.playTime = playTime;
+        playBack = 0;
+        playTime = 0;
 
+    }
+
+
+    /** Getters and setters */
+
+    public void updateSoldInfo(double duration){
+        playBack++;
+        playTime+=duration;
     }
 
     public String getName() {

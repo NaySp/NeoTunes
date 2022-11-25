@@ -17,4 +17,6 @@ public abstract class User{
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    
 }

@@ -10,6 +10,8 @@ public class Influencer extends Producer {
        podcasts = new ArrayList<PodCast>();
     }
 
+    //**Getters and setters */
+    
     public ArrayList<PodCast> getPodcasts() {
         return podcasts;
     }
