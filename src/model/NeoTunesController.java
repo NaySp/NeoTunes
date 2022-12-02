@@ -293,7 +293,12 @@ public class NeoTunesController{
         Customer customer = searchCustomer(nickName);
 
         if (customer != null) {
-            msj = customer.editPlaylist(nickName, newName);
+
+            if(customer instanceof Standard){
+                msj = ((Standard) customer).editPlaylist(nickName, newName);
+            } else if(customer instanceof Premium){
+                msj = ((Premium) customer).editPlaylist(nickName, newName);
+            }
            
         } else {
             msj = "The customer does not exist >:c ";
@@ -365,22 +370,32 @@ public class NeoTunesController{
         String msj = "";
         Customer customer = searchCustomer(idUser);
         Audio audio = searchAudio(nameAudio);
+
         if(customer != null){
             if(audio != null){
+
                 if(customer instanceof Premium premium){
                     msj = premium.playAudio(audio);
+
                 }else if(customer instanceof Standard standard){
+
                     if(audio instanceof Song){
-                        msj += showAnunce();
-                        
-                        msj += "\n"+ ((Standard) customer).playAudio(audio);
-                    }else{
+                        if(standard.songAd()){
+                            msj += showAnunce();
+                            msj += "\n"+ ((Standard) customer).playAudio(audio);
+
+                        }else{
+                            msj += "\n"+((Standard) customer).playAudio(audio);
+                        }
+                    
+                    } else{
                         msj += showAnunce();
                         msj += "\n"+((Standard) customer).playAudio(audio);
                     }
                     
                 
                 }
+                
             }else{
                 msj = "Sorry dude, that audio doesn't exists. ";
             }

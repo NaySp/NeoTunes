@@ -5,10 +5,13 @@ public class Standard extends Customer {
 
     public static final int SIZE_AUDIOS = 100;
     public static final int SIZE_PLAYLISTS = 20;
+    private int currentPlaybacks;
     
+
 
     public Standard (String nickName, String cc){
         super(nickName, cc);
+        currentPlaybacks = 0;
         
         
     }
@@ -147,7 +150,25 @@ public class Standard extends Customer {
         return msg;
     }
 
+    public boolean songAd(){
+        boolean ad = false;
+        if(currentPlaybacks==2){
+            ad = true;
+            currentPlaybacks = 0;
+        }else{
+            currentPlaybacks++;
+        }
+        return ad;
+    }
 
- 
+    public int getCurrentPlaybacks() {
+        return currentPlaybacks;
+    }
+
+
+    public void setCurrentPlaybacks(int currentPlaybacks) {
+        this.currentPlaybacks = currentPlaybacks;
+    }
+
 
 }

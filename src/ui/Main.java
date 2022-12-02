@@ -313,14 +313,15 @@ public class Main {
      * allows create a playlist
      */
     public void createPlayList(){
+
         String playName;
         String idUser;
         
 
-        System.out.println("Type the play list's name: ");
-        playName = reader.next();
         System.out.println("Type ur id");
         idUser = reader.next();
+        System.out.println("Type the play list's name: ");
+        playName = reader.next();
         String msj = controller.registerPlayList(idUser, playName);
         System.out.println(msj);
     }
@@ -336,10 +337,10 @@ public class Main {
 
         int opt;
 
+        System.out.println("Type ur name ;) ");
+        idUser = reader.next();
         System.out.println("Please, type play list's name");
         playName = reader.next();
-        System.out.println("Type ur id");
-        idUser = reader.next();
         do {
             System.out.println("Select the action to do : \n"+
             "1. Change playlist's name\n"+
@@ -359,7 +360,7 @@ public class Main {
             case 2:
                 System.out.println("Type the audio's nameee");
                 audioName = reader.next();
-                System.out.println(controller.addAudioToPlaylist(audioName, playName, idUser));;    
+                System.out.println(controller.addAudioToPlaylist(idUser, playName, audioName ));;    
                 break;
             case 3:
                 System.out.println("Type audio's name");
@@ -379,11 +380,11 @@ public class Main {
         String audioName;
         String idUser;
 
-        System.out.println("Type audio's name");
-        audioName = reader.next();
         System.out.println("Type ur id");
         idUser = reader.next();
-        System.out.println(controller.playAudio(audioName, idUser));
+        System.out.println("Type audio's name");
+        audioName = reader.next();
+        System.out.println(controller.playAudio(idUser, audioName));
 
     }
 
